@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botones Interactivos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .botonera {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .boton {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4CAF50 (verde), #2196F3 (azul), #f44336 (rojo) según el botón
+        }
+
+        .boton:hover {
+            background-color: #086572 (oscuro para verde), #1976D2 (oscuro para azul), #d32f2f (oscuro para rojo)
+        }
+    </style>
+</head>
+<body>
+    <div class="botonera">
+        <button onclick="saveText()">Guardar Texto</button>
+        <button onclick="copyText()">Copiar Texto</button>
+        <button onclick="clearText()">Limpiar Todo</button>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <textarea id="textoArea" rows="10" placeholder="Escribe tu texto aquí..."></textarea>
+        <p>Resultados de clics en botones:</p>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function saveText() {
+            const text = document.getElementById('textoArea').value;
+            alert(`Texto guardado: ${text}`);
+        }
+
+        function copyText() {
+            const text = document.getElementById('textoArea').value;
+            navigator.clipboard.writeText(text)
+                .then(() => alert('Texto copiado al portapapeles'))
+                .catch(err => console.error('Error copiando texto:', err));
+        }
+
+        function clearText() {
+            if (confirm('¿Deseas limpiar todo el texto?')) {
+                document.getElementById('textoArea').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
